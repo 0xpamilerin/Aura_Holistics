@@ -6,35 +6,53 @@
       <button class="menu-btn" aria-label="Menu">☰</button>
     </div></header>
 <section class="page-hero"><div class="container"><span class="eyebrow">Success Stories</span><h1>Hear from our patients.</h1><p>Watch these video testimonials to learn how Robboss Holistic has helped our clients find balance and wellness.</p></div></section>
-<section class="section"><div class="container"><div class="grid grid-2" id="video-grid">
-  <!-- Video 1 -->
-  <div class="card service-card" style="cursor:pointer;" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Sarah''s Journey with Acupuncture')">
-    <div style="background:var(--sage); height:200px; display:flex; align-items:center; justify-content:center; border-radius:8px; margin-bottom:16px; position:relative;">
-      <span style="font-size:40px; color:var(--ink);">?</span>
+<section class="section" style="background: var(--cream);">
+  <div class="container">
+    <div class="stories-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; align-items:stretch;">
+
+      <!-- Card 1 -->
+      <div class="card" style="overflow:hidden; padding:0;">
+        <video width="100%" controls style="display:block; border-radius:20px 20px 0 0; height:240px; object-fit:cover;">
+          <source src="assets/videos/sarah.mp4" type="video/mp4">
+        </video>
+        <div style="padding:20px 22px 24px;">
+          <span class="eyebrow">Acupuncture</span>
+          <h3 style="font-size:18px; margin-bottom:8px;">Sarah's Journey with Acupuncture</h3>
+          <p style="color:var(--muted); font-size:14px; font-style:italic;">"I had chronic back pain for years before I found this clinic. The sessions changed my life."</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card" style="overflow:hidden; padding:0;">
+        <video width="100%" controls style="display:block; border-radius:20px 20px 0 0; height:240px; object-fit:cover;">
+          <source src="assets/videos/journey.mp4" type="video/mp4">
+        </video>
+        <div style="padding:20px 22px 24px;">
+          <span class="eyebrow">Herbal Medicine</span>
+          <h3 style="font-size:18px; margin-bottom:8px;">Finding Balance with Herbal Medicine</h3>
+          <p style="color:var(--muted); font-size:14px; font-style:italic;">"The personalized herbal capsules have completely restored my energy levels and fixed my digestion."</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" style="overflow:hidden; padding:0;">
+        <video width="100%" controls style="display:block; border-radius:20px 20px 0 0; height:240px; object-fit:cover;">
+          <source src="assets/videos/michael.mp4" type="video/mp4">
+        </video>
+        <div style="padding:20px 22px 24px;">
+          <span class="eyebrow">Cupping Therapy</span>
+          <h3 style="font-size:18px; margin-bottom:8px;">Michael's Cupping Experience</h3>
+          <p style="color:var(--muted); font-size:14px; font-style:italic;">"As an athlete, muscle recovery is everything. The cupping therapy here is incredible."</p>
+        </div>
+      </div>
+
     </div>
-    <h3>Sarah's Journey with Acupuncture</h3>
-    <p>"I had chronic back pain for years before I found this clinic. The acupuncture sessions changed my life."</p>
   </div>
-  <!-- Video 2 -->
-  <div class="card service-card" style="cursor:pointer;" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Finding Balance with Herbal Medicine')">
-    <div style="background:var(--sage); height:200px; display:flex; align-items:center; justify-content:center; border-radius:8px; margin-bottom:16px; position:relative;">
-      <span style="font-size:40px; color:var(--ink);">?</span>
-    </div>
-    <h3>Finding Balance with Herbal Medicine</h3>
-    <p>"The personalized herbal capsules have completely restored my energy levels and fixed my digestion."</p>
-  </div>
-  <!-- Video 3 -->
-  <div class="card service-card" style="cursor:pointer;" onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', 'Michael''s Cupping Experience')">
-    <div style="background:var(--sage); height:200px; display:flex; align-items:center; justify-content:center; border-radius:8px; margin-bottom:16px; position:relative;">
-      <span style="font-size:40px; color:var(--ink);">?</span>
-    </div>
-    <h3>Michael's Cupping Experience</h3>
-    <p>"As an athlete, muscle recovery is everything. The cupping therapy here is incredible."</p>
-  </div>
-</div></div></section>
+</section>
+
 <div class="modal-overlay" id="videoModal" onclick="closeVideoModal(event)" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; align-items:center; justify-content:center;">
   <div class="modal-content" style="width:90%; max-width:800px; background:#000; position:relative; border-radius:12px; overflow:hidden; aspect-ratio: 16/9;" onclick="event.stopPropagation()">
-    <button onclick="closeVideoModal()" style="position:absolute; top:-40px; right:0; color:#fff; background:transparent; border:none; font-size:30px; cursor:pointer;">&times;</button>
+    <button class="close-btn" onclick="closeVideoModal()" style="position:absolute; top:-40px; right:0; color:#fff; background:transparent; border:none; font-size:30px; cursor:pointer;">&times;</button>
     <iframe id="videoPlayer" src="" style="width:100%; height:100%; border:none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </div>

@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ── mobile nav ── */
-  const menu  = document.querySelector(".menu-btn");
+  const menu = document.querySelector(".menu-btn");
   const links = document.querySelector(".nav-links");
-  const nav   = document.querySelector(".nav");
+  const nav = document.querySelector(".nav");
 
   if (menu) {
     menu.addEventListener("click", () => {
@@ -19,12 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* close nav when a link is clicked */
-  document.querySelectorAll(".nav-links a").forEach(a => {
+  /* close nav when a link is clicked (excluding dropdown toggle) */
+  document.querySelectorAll(".nav-links a:not(.dropdown-toggle)").forEach(a => {
     a.addEventListener("click", () => {
       links && links.classList.remove("open");
       nav && nav.classList.remove("menu-open");
       if (menu) menu.innerHTML = "&#9776;";
+    });
+  });
+
+  /* ── dropdown toggle on mobile ── */
+  document.querySelectorAll(".dropdown-toggle").forEach(toggle => {
+    toggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      const dropdown = toggle.closest(".nav-dropdown");
+      if (dropdown) dropdown.classList.toggle("active");
     });
   });
 
@@ -100,17 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // --- Modal logic ---
-window.openResearchModal = function(title, meta, text, badge) {
+window.openResearchModal = function (title) {
   document.getElementById('modalTitle').innerText = title;
-  document.getElementById('modalMeta').innerText = meta;
-  document.getElementById('modalText').innerText = text;
-  document.getElementById('modalBadge').innerText = badge;
+  document.getElementById('pdfViewer').src = 'assets/dummy-research.pdf';
   document.getElementById('researchModal').classList.add('active');
 };
 
-window.closeResearchModal = function(event) {
+window.closeResearchModal = function (event) {
   if (event && event.target.closest('.modal-content') && !event.target.classList.contains('modal-close')) {
     return;
   }
+  document.getElementById('pdfViewer').src = '';
   document.getElementById('researchModal').classList.remove('active');
 };
