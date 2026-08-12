@@ -1467,5 +1467,14 @@ textarea {
 
   .nav-dropdown.active .nav-dropdown-content {
     display: flex;
+    flex-direction: column;
+  }
+
+  .footer .nav-dropdown-content a {
+    color: #c7d6cf !important;
+  }
+  .footer .nav-dropdown-content a:hover {
+    color: #fff !important;
+    background: transparent !important;
   }
 }
