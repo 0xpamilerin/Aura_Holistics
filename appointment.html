@@ -1,29 +1,98 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Book Appointment | Robboss Holistic &amp; Wellness Service</title><link rel="stylesheet" href="assets/style.css?v=2"></head><body><header class="nav inner-nav"><div class="container nav-inner">
-      <a class="logo" href="index.html">Robboss<span> Holistic</span></a>
-      <nav class="nav-links"><a href="index.html" class="">Home</a><div class="nav-dropdown"><a class="dropdown-toggle">About</a><div class="nav-dropdown-content"><a href="about.html">Our Story</a><a href="patient-stories.html">Patient Stories</a><a href="faq.html">FAQ</a></div></div><a href="treatments.html" class="">Services</a><a href="catalogue.html" class="">Herbal Catalogue</a><a href="research.html" class="">Research</a><a href="contact.html" class="">Contact</a></nav>
-      <a class="btn btn-primary" href="appointment.html">Book Appointment</a>
+<title>Book Appointment | Aura Holistic &amp; Wellness Service</title><link rel="stylesheet" href="assets/style.css?v=2"></head><body><header class="nav inner-nav"><div class="container nav-inner">
+      <a class="logo" href="index.html">Aura<span> Holistic</span></a>
+      <nav class="nav-links"><a href="index.html" class="">Home</a><div class="nav-dropdown"><a class="dropdown-toggle">About</a><div class="nav-dropdown-content"><a href="about.html">Our Story</a><a href="patient-stories.html">Patient Stories</a><a href="faq.html">FAQ</a></div></div><a href="treatments.html" class="">Services</a><a href="catalogue.html" class="">Herbal Catalogue</a><a href="research.html" class="">Research</a><a href="contact.html" class="">Contact</a><a href="appointment.html" class="nav-mobile-cta">Book Appointment</a></nav>
+      <a class="btn btn-primary active" href="appointment.html">Book Appointment</a>
       <button class="menu-btn" aria-label="Menu">☰</button>
     </div></header>
 <section class="page-hero"><div class="container"><span class="eyebrow">Appointments</span><h1>Book your session.</h1><p>Choose a treatment, preferred date and time, then submit your details. This demo is UI-only and ready for backend integration.</p></div></section>
 <section class="section"><div class="container booking"><div class="booking-nav"><div class="booking-step active">01 · Choose Treatment</div><div class="booking-step">02 · Date & Time</div><div class="booking-step">03 · Your Details</div><div class="booking-step">04 · Confirmation</div></div>
-<div class="booking-panel"><form class="form" id="demo-form"><div><label>Treatment<select required><option value="">Select a treatment</option><option>Acupuncture</option><option>Cupping Therapy</option><option>Moxibustion</option><option>Herbal Consultation</option><option>Reflex Therapy</option></select></label></div>
-<div class="form-grid"><label>Preferred date<input type="date" required></label><label>Preferred time<select required><option>09:00 AM</option><option>10:30 AM</option><option>12:00 PM</option><option>02:00 PM</option><option>03:30 PM</option></select></label></div>
-<div class="form-grid"><label>Full name<input required placeholder="Your name"></label><label>Phone<input required placeholder="+234..."></label></div>
-<label>Email<input type="email" required placeholder="you@example.com"></label><label>Additional notes<textarea placeholder="Anything the practitioner should know?"></textarea></label>
-<button class="btn btn-primary" type="submit">Submit Appointment Request →</button></form></div></div></section>
+<div class="booking-panel" id="bookingFormPanel">
+  <form class="form" id="appointment-form">
+    <div>
+      <label>Treatment
+        <select name="treatment" id="treatmentSelect" required>
+          <option value="">Select a treatment</option>
+          <option value="Acupuncture">Acupuncture</option>
+          <option value="Cupping Therapy">Cupping Therapy</option>
+          <option value="Moxibustion">Moxibustion</option>
+          <option value="Herbal Consultation">Herbal Consultation</option>
+          <option value="Reflex Therapy">Reflex Therapy</option>
+          <option value="Healthron">Healthron</option>
+          <option value="Steam Sauna">Steam Sauna</option>
+          <option value="Ionic Detox">Ionic Detox</option>
+          <option value="Dietetics">Dietetics</option>
+          <option value="Initial Consultation">Initial Consultation</option>
+        </select>
+      </label>
+    </div>
+    <div class="form-grid">
+      <label>Preferred date
+        <input type="date" name="date" id="appointmentDate" required>
+      </label>
+      <div>
+        <label>Preferred time slot</label>
+        <input type="hidden" name="preferred_time" id="selectedTime" value="09:00 AM">
+        <div class="time-grid">
+          <button type="button" class="time selected" data-time="09:00 AM">09:00 AM</button>
+          <button type="button" class="time" data-time="10:30 AM">10:30 AM</button>
+          <button type="button" class="time" data-time="12:00 PM">12:00 PM</button>
+          <button type="button" class="time" data-time="02:00 PM">02:00 PM</button>
+          <button type="button" class="time" data-time="03:30 PM">03:30 PM</button>
+          <button type="button" class="time" data-time="05:00 PM">05:00 PM</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-grid">
+      <label>Full name
+        <input type="text" name="fullname" required placeholder="Your full name">
+      </label>
+      <label>Phone
+        <input type="tel" name="phone" required placeholder="+234 800 000 0000">
+      </label>
+    </div>
+    <label>Email
+      <input type="email" name="email" required placeholder="you@example.com">
+    </label>
+    <label>Additional notes
+      <textarea name="notes" placeholder="Anything the practitioner should know before your session?"></textarea>
+    </label>
+    <button class="btn btn-primary" type="submit">Submit Appointment Request →</button>
+  </form>
+</div>
+
+<div class="booking-panel" id="bookingConfirmation" style="display: none;">
+  <div class="confirmation-card">
+    <div class="confirmation-icon">✓</div>
+    <span class="eyebrow">Request Confirmed</span>
+    <h2>Appointment Requested</h2>
+    <p>Thank you for booking with Aura Holistic. We have received your request and will contact you via email or phone to confirm your appointment time.</p>
+    <table class="summary-table">
+      <tr><td>Treatment:</td><td id="confirmTreatment">—</td></tr>
+      <tr><td>Date &amp; Time:</td><td id="confirmDateTime">—</td></tr>
+      <tr><td>Patient:</td><td id="confirmClient">—</td></tr>
+      <tr><td>Contact:</td><td id="confirmContact">—</td></tr>
+      <tr><td>Status:</td><td><span style="color:var(--ink-2); font-weight:700;">Pending Confirmation</span></td></tr>
+    </table>
+    <div style="margin-top: 28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a class="btn btn-primary" href="index.html">Back to Home</a>
+      <a class="btn btn-secondary" href="catalogue.html">Explore Herbal Catalogue</a>
+    </div>
+  </div>
+</div>
+</div></section>
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <a class="logo footer-logo" href="index.html">Robboss<span> Holistic</span> &amp; Wellness Service</a>
+      <a class="logo footer-logo" href="index.html">Aura<span> Holistic</span> &amp; Wellness Service</a>
       <p class="footer-desc">Traditional wellness care with a modern, personalised approach.</p>
-      <p class="footer-contact">+234 800 000 0000<br>hello@robbossholistic.com</p>
+      <p class="footer-contact">+234 800 000 0000<br>hello@auraholistic.com</p>
     </div>
-    <div><strong>Explore</strong><div class="nav-dropdown"><a class="dropdown-toggle">About</a><div class="nav-dropdown-content"><a href="about.html">Our Story</a><a href="patient-stories.html">Patient Stories</a><a href="faq.html">FAQ</a></div></div><a href="treatments.html">Services</a><a href="catalogue.html">Herbal Catalogue</a><a href="research.html">Research</a></div>
+    <div><strong>Explore</strong><a href="about.html">Our Story</a><a href="patient-stories.html">Patient Stories</a><a href="faq.html">FAQ</a><a href="treatments.html">Services</a><a href="catalogue.html">Herbal Catalogue</a><a href="research.html">Research</a></div>
     <div><strong>Appointments</strong><a href="appointment.html">Book a Session</a><a href="contact.html">Contact</a></div>
     <div><strong>Legal</strong><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
   </div>
-  <div class="container copyright">© 2026 Robboss Holistic &amp; Wellness Service. All rights reserved. Traditional Acupuncture &amp; Botanical Medicine.</div>
+  <div class="container copyright">© 2026 Aura Holistic &amp; Wellness Service. All rights reserved. Traditional Acupuncture &amp; Botanical Medicine.</div>
 </footer>
     <div class="toast"></div><script src="assets/app.js?v=2"></script></body></html>
 
